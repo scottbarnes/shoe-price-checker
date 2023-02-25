@@ -101,3 +101,34 @@ func TestGetShoesAtOrBelowThreshold(t *testing.T) {
 		}
 	}
 }
+
+func TestGetQueryURLs(t *testing.T) {
+	type test struct {
+		name        string
+		queryString string
+		want        []string
+	}
+
+	tests := []test{
+		{
+			name:        "one URL",
+			queryString: "https://example.com/query.php?item=1&category=1",
+			want:        []string{"https://example.com/query.php?item=1&category=1"},
+		}, {
+			name:        "two URLs, no spaces",
+			queryString: "https://example.com/query.php?item=1&category=1,https://example.com/query.php?item=2&category=2",
+			want:        []string{"https://example.com/query.php?item=1&category=1", "https://example.com/query.php?item=2&category=2"},
+		}, {
+			name:        "two URLs, with spaces",
+			queryString: "https://example.com/query.php?item=1&category=1, https://example.com/query.php?item=2&category=2",
+			want:        []string{"https://example.com/query.php?item=1&category=1", "https://example.com/query.php?item=2&category=2"},
+		},
+	}
+
+	for _, tc := range tests {
+		got := getQueryURLs(tc.queryString)
+		if !reflect.DeepEqual(tc.want, got) {
+			t.Fatalf("expected %v, got %v", tc.want, got)
+		}
+	}
+}

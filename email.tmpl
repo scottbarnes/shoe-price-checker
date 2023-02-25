@@ -1,14 +1,16 @@
 <html>
   <body>
     <div>
-      <div><h3>Shoes at or under ${{.ThresholdPrice}} meeting the <a href="{{.QueryURL}}">criteria</a>:</h3></div>
-      <div>
-        <ul>
-          {{range .ShoesAtOrBelowThreshold}}
-            <li>{{.ParentName}}: {{.PriceLow}}</li>
-          {{end}}
-        </ul>
-      <div>
+      {{range .}}
+        <div><h3>Shoes at or under ${{.ThresholdPrice}} meeting the <a href="{{.QueryURL}}">criteria</a>:</h3></div>
+        <div>
+          <ul>
+            {{range .ShoesAtOrBelowThreshold}}
+              <li>{{.ParentName}}: {{.PriceLow}}</li>
+            {{end}}
+          </ul>
+        <div>
+      {{end}}
     </div>
   </body>
 </html>
