@@ -14,7 +14,7 @@ Setup involves:
 ### Configuring .env
 Create a `.env` file in the application's working directory that looks something like:
 ```sh
-QUERY_URL=your_query
+QUERY_URL="your_query"  # Use quotes.
 THRESHOLD_PRICE=some_dollar_value
 RECIPIENT_EMAIL=to_whatever_email_address
 FROM_GMAIL=from_gmail_address
@@ -25,7 +25,7 @@ Note: `QUERY_URL` can contain multiple comma separated queries. See the followin
 
 For example:
 ```sh
-QUERY_URL=https://static.runningwarehouse.com/solr/solr_query.php?search=products&brand_str%5B%5D=Altra&facet_base_MSTFIL%5B%5D=facet_value_MTRAILCOND&filter_cat=SALEMS&filter_set=MSFILTER, https://static.runningwarehouse.com/solr/solr_query.php?search=products&brand_str%5B%5D=HOKA&filter_cat=SALEMS&filter_set=MSFILTER
+QUERY_URL="https://static.runningwarehouse.com/solr/solr_query.php?search=products&brand_str%5B%5D=Altra&facet_base_MSTFIL%5B%5D=facet_value_MTRAILCOND&filter_cat=SALEMS&filter_set=MSFILTER, https://static.runningwarehouse.com/solr/solr_query.php?search=products&brand_str%5B%5D=HOKA&filter_cat=SALEMS&filter_set=MSFILTER"
 THRESHOLD_PRICE=75
 RECIPIENT_EMAIL=my_address@gmail.com
 FROM_GMAIL=perhaps_the_same_email@gmail.com

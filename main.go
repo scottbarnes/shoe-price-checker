@@ -186,6 +186,8 @@ func main() {
 	}
 
 	// Email out the matching and sorted shoes
-	email.body = createEmailBody(queryResults)
-	sendEmail(email)
+	if len(queryResults) > 0 {
+		email.body = createEmailBody(queryResults)
+		sendEmail(email)
+	}
 }
